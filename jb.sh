@@ -65,5 +65,15 @@ echo "清理系统..."
 apt autoremove -y
 apt autoclean
 
+# 给当前脚本赋予执行权限
+echo "正在为当前脚本赋予执行权限..."
+chmod +x "$0"
+
+# 创建快捷方式 wls 指向此脚本
+echo "创建快捷键 'wls'..."
+ln -sf "$(realpath "$0")" /usr/local/bin/wls
+chmod +x /usr/local/bin/wls
+
 # 显示完成信息
 echo "系统更新并更换源为清华源完成，Docker 也已更换为清华源。"
+echo "你现在可以使用 'wls' 快捷键来运行此脚本。"
